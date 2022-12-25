@@ -1,5 +1,34 @@
 package com.sms.studentmanagementsystem.service.impl;
 
-public class StudentServiceImpl {
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.sms.studentmanagementsystem.entity.Student;
+import com.sms.studentmanagementsystem.repository.StudentRepository;
+import com.sms.studentmanagementsystem.service.StudentService;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+	private StudentRepository studentRepository;
+	
+	public StudentServiceImpl(StudentRepository studentRepository) {
+		super();
+		this.studentRepository = studentRepository;
+	}
+
+
+	@Override
+	public List<Student> getAllStudents() {
+		
+		return studentRepository.findAll();
+	}
+
+
+	@Override
+	public Student saveStudent(Student student) {
+		return studentRepository.save(student);
+	}
 
 }
